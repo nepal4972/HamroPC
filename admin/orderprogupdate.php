@@ -8,7 +8,7 @@ if(isset($_GET['orderid']) && ($_GET['prodprogress'])){
     $sql = "UPDATE ordertable SET order_progress = order_progress, order_progress= '$prodprogress' WHERE InvoiceNo = $orderid ";
     $result= mysqli_query($link, $sql);
   if($result){
-    header('location: ordertable');
+    header('location: ordertable.php');
   }else{
     die(mysqli_error($link));
   }

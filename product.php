@@ -19,7 +19,7 @@ if(isset($_POST["addCart"])){
             $quantity = $_POST["quantityfinal"];
             $_SESSION['quantity'] = $quantity;
 
-            header('Location: cartintermediate?id='.$id.'&target=add');
+            header('Location: cartintermediate.php?id='.$id.'&target=add');
         }else{
             echo "<script type='text/javascript'>alert('Product quantity should not be less than one!')</script>";
         }

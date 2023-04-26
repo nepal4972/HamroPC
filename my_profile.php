@@ -114,4 +114,3 @@ include 'connect.php';
 }
   </style>
 </body>
-</html>

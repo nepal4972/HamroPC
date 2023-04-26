@@ -1,6 +1,6 @@
 <?php
+include '../scripts.php';
 include '../connect.php';
-session_start();
 error_reporting(0);
 ?>
 <!DOCTYPE html>
@@ -18,22 +18,23 @@ error_reporting(0);
 </head>
 
 <body>
-<?php if(isset($_SESSION['type']) && $_SESSION['type']=='admin'){ ?>
+<?php if($_SESSION['type']=='admin'){ ?>
     <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">Hamro Pc Admin</div>
             <div class="list-group list-group-flush my-3">
-                <a href="./dashboard" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                <a href="./dashboard.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                <a href="./producttable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="./producttable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-gift me-2"></i>Products</a>
-                <a href="./usertable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
+                <a href="./usertable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
                         class="fas fa-user me-2"></i>Users</a>
-                <a href="./ordertable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="./ordertable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-shopping-cart me-2"></i>Orders</a>
-                        <a href="./category" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        <a href="./category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-shopping-cart me-2"></i>Category</a>
-                <a href="../log_out" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" onclick="return confirm('Sure Logout?');"><i
+                <a href="../log_out.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" onclick="return confirm('Sure Logout?');"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
@@ -59,9 +60,9 @@ error_reporting(0);
                                 <i class="fas fa-user me-2"></i>Profile
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="../my_profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="../index">Home Page</a></li>
-                                <li><a class="dropdown-item" href="../log_out" onclick="return confirm('Sure Logout?');">Logout</a></li>
+                                <li><a class="dropdown-item" href="../my_profile.php">Profile</a></li>
+                                <li><a class="dropdown-item" href="../index.php">Home Page</a></li>
+                                <li><a class="dropdown-item" href="../log_out.php" onclick="return confirm('Sure Logout?');">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -198,7 +199,7 @@ error_reporting(0);
     </div>
     </div>
 <?php } else{
-    header("Location: index");
+    header("Location: index.php");
 }?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script>

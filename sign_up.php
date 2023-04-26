@@ -21,7 +21,7 @@ if(isset($_POST["signup"])){
     $select = mysqli_query($link, "SELECT * FROM `user` WHERE email ='$email'") or die('query failed');
 
     $date = date("Y-m-d");
-
+	
     if($name=='' & $email=='' & $phone==''& $password=='' & $address=='' & $date==''){
         echo '<div class="alert-message">Fill All The Fields</div>';
     }
@@ -42,7 +42,7 @@ if(isset($_POST["signup"])){
                 $result = mysqli_query($link, $sql);
                 $row = mysqli_fetch_assoc($result);
                 $_SESSION['userID'] = $row['userID'];
-                header('Location: index');
+                header('Location: index.php');
           }
                 else{
                     echo '<div class="alert-message">Password Must be of 8 Character</div>';
@@ -72,15 +72,15 @@ if(isset($_POST["signup"])){
     <div class="signupbox">
         <h1>SIGNUP</h1>
         <form method="post">
-            <input type="text" name="name" placeholder="Enter Your Name" value="<?php echo $name; ?>" required>
+            <input type="text" name="name" placeholder="Enter Your Name" value="<?php echo $name; ?>">
             <br><br>
-            <input type="text" name="email" placeholder="Enter Email" value="<?php echo $email; ?>" required>
+            <input type="text" name="email" placeholder="Enter Email" value="<?php echo $email; ?>">
             <br><br>
-            <input type="text" name="phone" placeholder="Enter Phone Number" value="<?php echo $phone; ?>" required>
+            <input type="text" name="phone" placeholder="Enter Phone Number" value="<?php echo $phone; ?>">
             <br><br>
-            <input type="password" name="password" placeholder="Enter Password" value="<?php echo $password; ?>" required>
+            <input type="password" name="password" placeholder="Enter Password" value="<?php echo $password; ?>">
             <br><br>
-            <input type="text" name="address" placeholder="Enter Full Address" value="<?php echo $address; ?>" required>
+            <input type="text" name="address" placeholder="Enter Full Address" value="<?php echo $address; ?>">
             <br><br>
             <input type="submit" name="signup" value="Sign Up">
             <?php echo $error;?>

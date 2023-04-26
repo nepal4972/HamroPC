@@ -32,7 +32,7 @@ include 'connect.php';
             }
             foreach ($options as $option) {
             ?>
-            <button><a href="shop?category=<?php echo $option['cathash_name'];?>"><?php echo $option['category_name'];}?></a></button>
+            <button><a href="./shop?category=<?php echo $option['cathash_name'];?>"><?php echo $option['category_name'];}?></a></button>
             <?php?>
         </div>
     </div>

@@ -13,7 +13,7 @@
   <h1>404</h1>
   <h2>PAGE NOT FOUND</h2>
   <p>This Page is only for admin. Don't Try To Access.....!</p>
-  <a href="../index"> go to homepage</a>
+  <a href="../index.php"> go to homepage</a>
  </div>
 </div>
 

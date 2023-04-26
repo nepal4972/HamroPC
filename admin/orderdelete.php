@@ -6,7 +6,7 @@ if(isset($_GET['orderdeleteid'])){
         $sql = 'delete from ordertable where InvoiceNo= '. $orderid .'';
         $result= mysqli_query($link, $sql);
         if($result){
-            header('location: ordertable');
+            header('location: ordertable.php');
             echo '<script>alert("Order Deleted")</script>';
         }
         else{

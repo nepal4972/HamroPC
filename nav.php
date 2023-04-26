@@ -22,14 +22,14 @@
                              
                              <?php
                                if(isset($_POST['search-submit'])){
-                               $str=mysqli_real_escape_string($link,$_POST['search-input']);
+	                           $str=mysqli_real_escape_string($link,$_POST['search-input']);
 	                           $sql="select * from product where name like '%$str%' or description like '%$str%'";
                                $goto=mysqli_query($link,$sql);
 	                            if(mysqli_num_rows($goto)>0){
                                     $row = mysqli_fetch_assoc($goto);
                                     $_SESSION['number'] = $goto;
                                     $_SESSION['row'] = $row['productID'];
-                                    header ('location: search');
+                                    header ('location: search.php');
 	                            }else{
                                     echo '<div class="alert-messagesearch">No Search Product Found.</div>';
 	                            }

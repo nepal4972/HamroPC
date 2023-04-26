@@ -18,14 +18,17 @@ error_reporting(0);
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body onload="myFunction()"> 
-<div class="loading" id="loading"></div>
+<body>
+
 <?php include 'nav.php'?>
 <div class="header-bottom">
     <div class="slider">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
                 <?php
+                $sql = "SELECT img_dir FROM slider";
+                $result = mysqli_query($link, $sql);
+                $count = mysqli_num_rows($result);
                 if($count>0)
                     echo "<li data-target=\"#carouselExampleIndicators\" data-slide-to=\"0\" class=\"active\"></li>";
 
@@ -35,11 +38,15 @@ error_reporting(0);
                 ?>
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active"> <img src="images/slider/slider1.png" class="d-block w-100"> </div>
-                    <div class="carousel-item"> <img src="./images/slider/slider2.png" class="d-block w-100"> </div>
-                    <div class="carousel-item"> <img src="./images/slider/slider3.png" class="d-block w-100"> </div>
-                    <div class="carousel-item"> <img src="./images/slider/slider4.png" class="d-block w-100"> </div>
-                </div>
+                <?php
+
+                $row = mysqli_fetch_assoc($result);
+                echo '<div class="carousel-item active"> <img src="' . ($row['img_dir']) . '" class="d-block w-100"> </div>';
+
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo '<div class="carousel-item"> <img src="' . ($row['img_dir']) . '" class="d-block w-100"> </div>';
+                }
+                ?> </div>
             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
         </div>
@@ -51,68 +58,53 @@ error_reporting(0);
         <div class="section-title">
             <h2>Feature Product</h2> </div>
         <div class="row">
-
-        <?php
-        $sql = "select * from product where prodtype = 'featured'";
-        $run = mysqli_query($link, $sql);
-        $count = mysqli_num_rows($run);
-        if ($count > 0) {
-            while ($row = mysqli_fetch_assoc($run)) {
+            <?php
+            $sql = 'select * from featureproduct';
+            $result = mysqli_query($link, $sql);
+            while($row = mysqli_fetch_assoc($result)){
+                $sql = 'select * from product where productID="'.$row['productID'].'"';
+                $result2 = mysqli_query($link, $sql);
+                $row2 = mysqli_fetch_assoc($result2);
                 ?>
+
                 <div class="col-md-4">
-                <div class="hot-item-top">
-                        <img src="<?php echo $row['image'] ?>" class="img-fluid" alt="pic">
+                    <div class="hot-item-top">
+                        <?php if($row['image'] = !null){?>
+                            <img src="<?php echo $row2['image']; ?>" class="img-fluid" alt="pic">
                         <div class="hot-overlay">
-                                <?php if(isset($_SESSION['userID'])){?>
-                                    <?php
-                                    if($row['stock'] >= 5 ){?>
-                                        <button type="button" name="addcart" title="Add to Cart"><a href="cartintermediate?id=<?php echo $row['productID']; ?>&target=add"><i class="fas fa-shopping-cart"></i></a></button>
-                                <?php } else {
-                                }
-                                    ?>
+                            <?php if(isset($_SESSION['userID'])){?>
+                                  <?php
+                                    if($row2['stock'] >= 5 ){?>
+                                        <button type="button" name="addcart" title="Add to Cart"><a href="cartintermediate.php?id=<?php echo $row2['productID']; ?>&target=add"><i class="fas fa-shopping-cart"></i></a></button>
                                 <?php }else{?>
-                                    <button type="button" name="addcart" title="Add to Cart" onclick="alert('Login to continue')"><i class="fas fa-shopping-cart"></i></button>
+                                    <?php }
+                                    ?>
+                            <?php }else{?>
+                                <button type="button" name="addcart" title="Add to Cart" onclick="alert('Login to continue')"><i class="fas fa-shopping-cart"></i></button>
                             <?php }?>
-                            <button type="button" title="Details"><a href="product?id=<?php echo $row['productID']; ?>"><i class="fas fa-eye"></i></a></button>
+                            <button type="button" title="Details"><a href="product.php?id=<?php echo $row2['productID']; ?>"><i class="fas fa-eye"></i></a></button>
                         </div>
+                        <?php
+                       }?>
                     </div>
                     <div class="hot-item-bottom">
-                        <h5><?php echo $row['name']; ?></h5>
-                        <h6> NPR. <?php echo $row['price']; ?></h6> </div>
+                        <h5><?php echo $row2['name']; ?></h5>
+                        <h6> NPR. <?php echo $row2['price']; ?></h6> </div>
                 </div>
-                <?php
-            }
-        }else{ ?>
-            <div class="container"><div class="indexerror"><h3>There is no Featured Product to Show</h3></div></div>
-        <?php } ?>
+            <?php } ?>
+
         </div>
         <div class="more-btn">
-            <a href="shop">Go To Shop</a>
+            <a href="shop.php">Go To Shop</a>
         </div>
     </div>
 </div>
-
 
 <?php
 include 'footer.php';
 ?>
 
-<script>
-		// $(document).ready(function(){
-			// 	$('div#loading').removeAttr('id');
-		// });
-		var preloader = document.getElementById("loading");
-		// window.addEventListener('load', function(){
-		// 	preloader.style.display = 'none';
-		// 	})
-
-		function myFunction(){
-			preloader.style.display = 'none';
-		};
-	</script>
-
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-
 </body>
 </html>

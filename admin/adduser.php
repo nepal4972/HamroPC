@@ -7,7 +7,7 @@ if(isset($_POST['addusers'])){
     if(isset($_POST['user_name']) && isset($_POST['user_email']) && isset($_POST['user_phone']) && isset($_POST['user_password']) && isset($_POST['user_address']) && isset($_POST['user_type'])) {
         $sql = 'insert into user (name, email, phone, password, address, type) values ("' . $_POST['user_name'] . '", "' . $_POST['user_email'] . '", "' . $_POST['user_phone'] . '", "' . $_POST['user_password'] . '", "' . $_POST['user_address'] . '", "' . $_POST['user_type'] . '")';
         mysqli_query($link, $sql);
-        header('Location: usertable');
+        header('Location: usertable.php');
     }
     else echo "<script type='text/javascript'>alert('Fill all the fields')</script>";
 }
@@ -35,17 +35,17 @@ if(isset($_POST['addusers'])){
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">Hamro Pc Admin</div>
             <div class="list-group list-group-flush my-3">
-                <a href="./dashboard" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                <a href="./dashboard.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                <a href="./producttable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="./producttable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-gift me-2"></i>Products</a>
-                <a href="./usertable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
+                <a href="./usertable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
                         class="fas fa-user me-2"></i>Users</a>
-                <a href="./ordertable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="./ordertable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-shopping-cart me-2"></i>Orders</a>
-                        <a href="./category" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        <a href="./category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-shopping-cart me-2"></i>Category</a>
-                <a href="../log_out" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" onclick="return confirm('Sure Logout?');"><i
+                <a href="../log_out.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" onclick="return confirm('Sure Logout?');"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
@@ -71,9 +71,9 @@ if(isset($_POST['addusers'])){
                                 <i class="fas fa-user me-2"></i>Profile
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="../my_profile">Profile</a></li>
+                                <li><a class="dropdown-item" href="../my_profile.php">Profile</a></li>
                                 <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li><a class="dropdown-item" href="../log_out" onclick="return confirm('Sure Logout?');">Logout</a></li>
+                                <li><a class="dropdown-item" href="../log_out.php" onclick="return confirm('Sure Logout?');">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -103,7 +103,7 @@ if(isset($_POST['addusers'])){
                     <div class="adminComponentHeading">
                     <form method="post">
                         UserName:
-                        <input class="form-control" type="text" name="Full Name" placeholder="User Name">
+                        <input class="form-control" type="text" name="user_name" placeholder="User Name">
                         Email:
                         <input class="form-control" type="text" name="user_email" placeholder="Email">
                         Phone No.
@@ -131,7 +131,7 @@ if(isset($_POST['addusers'])){
         </div>
     </div>
 <?php } else{
-    header("Location: index");
+    header("Location: index.php");
 }?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script>

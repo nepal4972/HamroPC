@@ -25,17 +25,17 @@ error_reporting (0);
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">Hamro Pc Admin</div>
             <div class="list-group list-group-flush my-3">
-                <a href="./dashboard" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                <a href="./dashboard.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                <a href="./producttable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="./producttable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-gift me-2"></i>Products</a>
-                <a href="./usertable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
+                <a href="./usertable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
                         class="fas fa-user me-2"></i>Users</a>
-                <a href="./ordertable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="./ordertable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-shopping-cart me-2"></i>Orders</a>
-                        <a href="./category" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                        <a href="./category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-shopping-cart me-2"></i>Category</a>
-                <a href="../log_out" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" onclick="return confirm('Sure Logout?');"><i
+                <a href="../log_out.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" onclick="return confirm('Sure Logout?');"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
@@ -61,9 +61,9 @@ error_reporting (0);
                                 <i class="fas fa-user me-2"></i>Profile
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="../my_profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="../index">Home Page</a></li>
-                                <li><a class="dropdown-item" href="../log_out" onclick="return confirm('Sure Logout?');">Logout</a></li>
+                                <li><a class="dropdown-item" href="../my_profile.php">Profile</a></li>
+                                <li><a class="dropdown-item" href="../index.php">Home Page</a></li>
+                                <li><a class="dropdown-item" href="../log_out.php" onclick="return confirm('Sure Logout?');">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -78,11 +78,10 @@ error_reporting (0);
                                 <tr>
                                     <th scope="col" width="50">Invoice No.</th>
                                     <th scope="col">Product Name</th>
+                                    <th scope="col">Category</th>
                                     <th scope="col">Quantity</th>
-                                    <th scope="col">Full Name</th>
-                                    <th scope="col">Contact No.</th>
+                                    <th scope="col">User Email</th>
                                     <th scope="col" width="50">Address</th>
-                                    <th scope="col">Payment</th>
                                     <th scope="col">Order Date</th>
                                     <th scope="col">Action</th>
                                 </tr>
@@ -113,19 +112,22 @@ error_reporting (0);
                         $row2 = mysqli_fetch_assoc($result2);
                         echo '<td>'.$row2["name"].'</td>';
 
-                        echo '<td>'.$row["productQuantity"].'</td>';
+                        echo '<td>'.$row2["category"].'</td>';
 
+                        echo '<td>'.$row["productQuantity"].'</td>';
 
                         $sql3 = 'select * from user where userID="'.$row['userID'].'"';
                         $result3 = mysqli_query($link,$sql3);
                         $row3 = mysqli_fetch_assoc($result3);
-                        echo '<td>'.$row3["name"].'</td>';
-                        echo '<td>'.$row3["phone"].'</td>';
+                        echo '<td>'.$row3["email"].'</td>';
+
+                        $sql3 = 'select * from user where userID='.$row['userID'].'';
+                        $result3 = mysqli_query($link,$sql3);
+                        $row3 = mysqli_fetch_assoc($result3);
                         echo '<td>'.$row3["address"].'</td>'?>
-                        <td><?php echo $row['payment'] ?></td>
                         <td><?php echo $row['orderdate'] ?></td>
                         <td>
-                        <form action="orderprogupdate" method="GET">
+                        <form action="orderprogupdate.php" method="GET">
                         <select name="prodprogress">
                             <option value="<?php echo $row['order_progress'];?>">Order progress</option>
                             <option value="Pending">Pending</option>
@@ -136,7 +138,7 @@ error_reporting (0);
                         <input type="submit" name="orderprog" value="Update" class="btn btn-primary" onclick="return confirm('You Are Sure?');"></a>
                         </form>
                         <button class="btn btn-danger">
-                            <a href="orderdelete?orderdeleteid=<?php echo $row['InvoiceNo'];?>" class="text-light" onclick="return confirm('Want To Delete This Order?');">Delete</a>
+                            <a href="orderdelete.php?orderdeleteid=<?php echo $row['InvoiceNo'];?>" class="text-light" onclick="return confirm('Want To Delete This Order?');">Delete</a>
                         </button>
                             </td>
                               </tr><?php
@@ -152,7 +154,7 @@ error_reporting (0);
     </div>
     </div>
 <?php } else{
-    header("Location: index");
+    header("Location: index.php");
 }?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script>

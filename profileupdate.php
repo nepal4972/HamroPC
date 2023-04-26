@@ -124,8 +124,5 @@ $row1 = mysqli_fetch_assoc($result1);
     background: rgba(10, 8, 129, 0.8);
 }
   </style>
-  <?php
-include 'footer.php';
-?>
 
 </body>

@@ -1,6 +1,5 @@
 <?php
-
-session_start();
+include 'scripts.php';
 include 'connect.php';
 
 $email='';
@@ -50,7 +49,7 @@ if(isset($_POST["login"])){
             $_SESSION['name'] = $row['name'];
             $_SESSION['type'] = $row['type'];
 
-            header('Location: index');
+            header('Location: ./index');
         }else
             $errorUser = '<h2><label class="text-danger">Email or Password Not Valid</label></h2>';
     }

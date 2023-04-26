@@ -7,7 +7,7 @@ if(isset($_GET['deleteprodid'])){
         $sql = 'delete from product where productID= '. $prodid .'';
         $result= mysqli_query($link, $sql);
         if($result){
-            header('location: producttable');
+            header('location: producttable.php');
             echo '<script>alert("Product Deleted")</script>';
         }
         else{

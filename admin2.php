@@ -13,7 +13,7 @@ if(isset($_POST['add'])){
 
         $sql = 'insert into product (name, price, description, category, image) values ("' . $_POST['name'] . '", "' . $_POST['price'] . '", "' . $_POST['description'] . '", "' . $_POST['category'] . '", "' . $_POST['image'] . '")';
         mysqli_query($link, $sql);
-        header('Location: admin');
+        header('Location: admin.php');
     }
     else echo "<script type='text/javascript'>alert('Fill all the fields')</script>";
 }
@@ -31,7 +31,7 @@ if(isset($_POST['update'])){
     if(isset($_POST['name']) && isset($_POST['price']) && isset($_POST['category']) && isset($_POST['image']) && isset($_POST['description'])) {
         $sql = 'update into product (name, price, description, category, image) values ("' . $_POST['name'] . '", "' . $_POST['price'] . '", "' . $_POST['description'] . '", "' . $_POST['category'] . '", "' . $_POST['image'] . '") where productID = $_SESSION["idassign"]';
         mysqli_query($link, $sql);
-        header('Location: admin');
+        header('Location: admin.php');
     }
     else echo "<script type='text/javascript'>alert('Fill all the fields')</script>";
 }
@@ -62,7 +62,7 @@ if(isset($_POST['remove'])){
 <body>
 
 <?php
-include 'nav'
+include 'nav.php'
 ?>
 <section class="admin-area">
     <div class="container">

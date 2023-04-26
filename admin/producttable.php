@@ -23,17 +23,17 @@ session_start();
         <div class="bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 primary-text fs-4 fw-bold text-uppercase border-bottom">Hamro Pc Admin</div>
             <div class="list-group list-group-flush my-3">
-                <a href="./dashboard" class="list-group-item list-group-item-action bg-transparent second-text active"><i
+                <a href="./dashboard.php" class="list-group-item list-group-item-action bg-transparent second-text active"><i
                         class="fas fa-tachometer-alt me-2"></i>Dashboard</a>
-                <a href="./producttable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="./producttable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-gift me-2"></i>Products</a>
-                <a href="./usertable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
+                <a href="./usertable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i 
                         class="fas fa-user me-2"></i>Users</a>
-                <a href="./ordertable" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="./ordertable.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-shopping-cart me-2"></i>Orders</a>
-                <a href="./category" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
+                <a href="./category.php" class="list-group-item list-group-item-action bg-transparent second-text fw-bold"><i
                         class="fas fa-shopping-cart me-2"></i>Category</a>
-                <a href="../log_out" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" onclick="return confirm('Sure Logout?');"><i
+                <a href="../log_out.php" class="list-group-item list-group-item-action bg-transparent text-danger fw-bold" onclick="return confirm('Sure Logout?');"><i
                         class="fas fa-power-off me-2"></i>Logout</a>
             </div>
         </div>
@@ -59,9 +59,9 @@ session_start();
                                 <i class="fas fa-user me-2"></i>Profile
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="../my_profile">Profile</a></li>
-                                <li><a class="dropdown-item" href="../index">Home Page</a></li>
-                                <li><a class="dropdown-item" href="../log_out" onclick="return confirm('Sure Logout?');">Logout</a></li>
+                                <li><a class="dropdown-item" href="../my_profile.php">Profile</a></li>
+                                <li><a class="dropdown-item" href="../index.php">Home Page</a></li>
+                                <li><a class="dropdown-item" href="../log_out.php" onclick="return confirm('Sure Logout?');">Logout</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -85,7 +85,7 @@ session_start();
                 </style>
                     <h3 class="fs-4 mb-3">Product Lists:</h3>
                     <div class="more-btn">
-                        <a href="addproduct">Add New Product</a>
+                        <a href="addproduct.php">Add New Product</a>
                         </div>
                     <div class="col">
                         <table class="table bg-white rounded shadow-sm  table-hover">
@@ -118,10 +118,10 @@ session_start();
                             
                                <td>
                                     <button class="btn btn-primary">
-                                    <a href="productupdate?updateprodid=<?php echo $row['productID']; ?>" class="text-light">Update</a>
+                                    <a href="productupdate.php?updateprodid=<?php echo $row['productID']; ?>" class="text-light">Update</a>
                                     </button>
                                     <button class="btn btn-danger">
-                                    <a href="productdelete?deleteprodid=<?php echo $row['productID']; ?>" class="text-light" onclick="return confirm('Want To Delete This Product?');">Delete</a>
+                                    <a href="productdelete.php?deleteprodid=<?php echo $row['productID']; ?>" class="text-light" onclick="return confirm('Want To Delete This Product?');">Delete</a>
                                     </button>
                                 </td>
                             </tr><?php
@@ -138,7 +138,7 @@ session_start();
     </div>
     </div>
 <?php } else{
-    header("Location: index");
+    header("Location: index.php");
 }?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
     <script>

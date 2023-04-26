@@ -70,7 +70,7 @@ include 'nav.php'
                         <td>
                            <?php if($row["order_progress"] == 'Completed'){?>
                         <button class="btn btn-danger">
-                            <a href="orderdel?orderdeleteid=<?php echo $row['InvoiceNo'];?>" class="text-light" onclick="return confirm('Want To Delete This Order?');">Delete</a>
+                            <a href="orderdel.php?orderdeleteid=<?php echo $row['InvoiceNo'];?>" class="text-light" onclick="return confirm('Want To Delete This Order?');">Delete</a>
                             </button></td></tr>
                        <?php $sl = $sl + 1;}else{
                         echo 'Not Completed';
@@ -88,10 +88,6 @@ include 'nav.php'
             <h2>Please login first</h2> </div>
     <?php } ?>
 </div>
-
-<?php
-include 'footer.php';
-?>
 
 </body>
 

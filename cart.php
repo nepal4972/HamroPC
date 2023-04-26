@@ -59,8 +59,8 @@ include 'nav.php'
                         $total = $total + ($row['productQuantity'] * $row2['price']); ?>
                         <td>
                             <div class="plus-minus">
-                                <button><a href="cartintermediate?id=<?php echo $row['productID']?>?&target=minus">-</a></button>
-                                <button><a href="cartintermediate?id=<?php echo $row['productID']?>&target=add">+</a></button>
+                                <button><a href="cartintermediate.php?id=<?php echo $row['productID']?>?&target=minus">-</a></button>
+                                <button><a href="cartintermediate.php?id=<?php echo $row['productID']?>&target=add">+</a></button>
                             </div>
                         </td>   
                         <?php $_SESSION['cartprodid']=$row['productID']; ?>
@@ -84,7 +84,7 @@ include 'nav.php'
                 </table>
             </div>
             <div class="chk-btn">
-                <button><a href="checkoutform">Check Out</a></button>
+                <button><a href="checkout" onclick="return confirm('Do You Sure You Want To Order?');">Check Out</a></button>
             </div>
         <?php }
         else{ ?>

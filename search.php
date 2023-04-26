@@ -45,13 +45,13 @@ include 'connect.php';
                             <h6>Price: <?php echo $row['price']; ?></h6>
                             <div class="add">
                                 <?php if(isset($_SESSION['userID'])){?>
-                                    <button><a href="cartintermediate?id=<?php echo $row['productID']; ?>&target=add">Add to cart</a></button>
+                                    <button><a href="cartintermediate.php?id=<?php echo $row['productID']; ?>&target=add">Add to cart</a></button>
                                 <?php }else{?>
                                     <button type="button" name="addcart" title="Add to Cart" onclick="alert('Login to continue')">Add to cart</button>
                                 <?php }?>
                             </div>
                             <div class="details">
-                                <button><a href="product?id=<?php echo $row['productID']; ?>">Details</a></button>
+                                <button><a href="product.php?id=<?php echo $row['productID']; ?>">Details</a></button>
                             </div>
                         </div>
                     </div>
